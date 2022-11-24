@@ -6,13 +6,17 @@ from pyro.contrib.timeseries import IndependentMaternGP
 
 
 class GaussianProcess:
-    def __init__(self, kernel='Matern', nu=1.5) -> None:
-        self.nu = nu
+    def __init__(self) -> None:
+        pass
 
-    def fit(self, data, T_train, init_lr=0.01, final_lr=0.0003, num_steps=300, beta1=0.5):
+    def fit(self ,data, T_train, init_lr=0.01, final_lr=0.0003, num_steps=300, beta1=0.5, kernel=None, *kernelhp):
         _, obs_dim = data.shape
         self.gp = IndependentMaternGP(
         nu=1.5, obs_dim=obs_dim, length_scale_init=1.5 * torch.ones(obs_dim)).double()
+
+        if kernel != None:
+            self.gp = kernel(*kernelhp)
+            
         self.T_train = T_train
 
         adam = torch.optim.Adam(
