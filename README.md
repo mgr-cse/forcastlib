@@ -1,5 +1,8 @@
-# forcastlib library
-This is small a libarary mainly built for performing time series prediction tasks specifically for financial forecasting.
+# AML project: forcastlib library
+
+This work is done to fullfil the project requirement of Advanced Machine learing (CS60073).
+
+This is small a library mainly built for performing time series prediction tasks specifically for financial forecasting.
 
 This library is built on top of the following probablistic programming languages:
 * pyro [[1](#credits)] 
